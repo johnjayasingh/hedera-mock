@@ -8,7 +8,8 @@
     "seed": "node account/createAccount.js",
     "random_number": "node scripts/smart-contract/randomNumber.js",
     "random_number:contract": "node scripts/smart-contract/storeToContract.js",
-    "nft": "node scripts/nft/createNft.js"
+    "nft": "node scripts/nft/createNft.js",
+    "allowance": "node scripts/allowance/approveAllowance.js"
   },
   "author": "John S",
   "license": "ISC",
