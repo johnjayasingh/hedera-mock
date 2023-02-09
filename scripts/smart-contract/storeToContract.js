@@ -12,6 +12,8 @@ const [account1] = require(accountsPath);
 // Create a new Hedera client
 const client = createClient(account1.accountId, account1.privateKey);
 
+
+// Generate a random number and deploy a contract with the generated number as constructor parameter
 async function main() {
 
     // Create a random number 
