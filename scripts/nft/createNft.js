@@ -2,7 +2,7 @@ const { CustomRoyaltyFee, TokenCreateTransaction, CustomFixedFee, TokenSupplyTyp
 const { accountsPath } = require('../../constants');
 const { createClient } = require('../../lib/client')
 
-const [admin, treasury, supply] = require(accountsPath);
+const [_1, _2, admin, treasury, supply] = require(accountsPath);
 
 // Create a new Hedera client
 const client = createClient(admin.accountId, admin.privateKey);
