@@ -16,15 +16,15 @@ async function main() {
     const adminPrivateKey = PrivateKey.fromString(admin.privateKey);
     const treasuryPrivateKey = PrivateKey.fromString(treasury.privateKey);
 
-    let nftCustomFee = new CustomRoyaltyFee()
+    const nftCustomFee = new CustomRoyaltyFee()
         .setNumerator(5)
         .setDenominator(10)
         .setFeeCollectorAccountId(treasury.accountId)
         //the fallback fee is set to 1 hbar.
         .setFallbackFee(new CustomFixedFee().setHbarAmount(new Hbar(1)));
 
-    // CREATE NFT WITH CUSTOM FEE
-    let nftCreate = await new TokenCreateTransaction()
+    // Create NFT with royalty fee collection configured
+    const nftCreate = await new TokenCreateTransaction()
         .setTokenName("Accubits Royalty Token")
         .setTokenSymbol("ACCUBIT")
         .setTokenType(TokenType.NonFungibleUnique)
@@ -39,10 +39,10 @@ async function main() {
         .freezeWith(client)
         .sign(treasuryPrivateKey);
 
-    let nftCreateTxSign = await nftCreate.sign(adminPrivateKey);
-    let nftCreateSubmit = await nftCreateTxSign.execute(client);
-    let nftCreateRx = await nftCreateSubmit.getReceipt(client);
-    let tokenId = nftCreateRx.tokenId;
+    const nftCreateTxSign = await nftCreate.sign(adminPrivateKey);
+    const nftCreateSubmit = await nftCreateTxSign.execute(client);
+    const nftCreateRx = await nftCreateSubmit.getReceipt(client);
+    const tokenId = nftCreateRx.tokenId;
     console.log(`Created NFT with Token ID: ${tokenId}`);
 }
 
